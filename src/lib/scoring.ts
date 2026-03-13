@@ -66,8 +66,9 @@ export function computeSchemaStats(events: ParsedEvent[], userProperties: Parsed
     .sort((a, b) => (b.volume ?? 0) - (a.volume ?? 0))
     .slice(0, 10)
     .map((event) => ({
-      eventName: event.eventName,
+      name: event.eventName,
       volume: event.volume ?? 0,
+      queries: event.queryCount ?? 0,
     }))
 
   const totalProperties = events.reduce((sum, event) => sum + event.properties.length, 0)
@@ -83,6 +84,7 @@ export function computeSchemaStats(events: ParsedEvent[], userProperties: Parsed
     likelyPiiProperties: Array.from(new Set(likelyPiiProperties)).sort(),
     duplicatePropertyNames,
     topEventsByVolume,
+    topEventsByVolumeLegacy: topEventsByVolume.map((event) => ({ eventName: event.name, volume: event.volume })),
   }
 }
 
