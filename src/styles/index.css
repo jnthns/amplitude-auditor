@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --color-arctic-50: #f7fbff;
+  --color-arctic-100: #edf6ff;
+  --color-arctic-200: #d6e9ff;
+  --color-arctic-300: #b7d8ff;
+  --color-arctic-400: #8cbfff;
+  --color-arctic-500: #609fff;
+  --color-arctic-600: #467fef;
+  --color-arctic-700: #375fcb;
+  --color-arctic-800: #324ea4;
+  --color-arctic-900: #2f447f;
+}
+
+:root {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: #0f172a;
+  background-color: #f8fbff;
+}
+
+body {
+  margin: 0;
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-slate-200 bg-white shadow-sm;
+  }
+
+  .input-label {
+    @apply mb-1 block text-sm font-medium text-slate-700;
+  }
+
+  .input-base {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-arctic-500 focus:ring-2 focus:ring-arctic-200;
+  }
+
+  .chip {
+    @apply inline-flex cursor-pointer items-center rounded-full border px-3 py-1 text-xs font-medium transition;
+  }
+
+  .chip-on {
+    @apply border-arctic-600 bg-arctic-100 text-arctic-800;
+  }
+
+  .chip-off {
+    @apply border-slate-300 bg-white text-slate-600 hover:bg-slate-50;
+  }
+}
